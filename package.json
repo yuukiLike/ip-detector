@@ -1,14 +1,41 @@
 {
   "name": "ip-detector",
   "version": "3.0.0",
-  "description": "IP 检测工具",
-  "main": "dist/index.js",
+  "description": "IP 检测工具 - 检测公网 IP 并查询地理位置",
+  "main": "dist/lib.js",
+  "types": "dist/lib.d.ts",
+  "bin": {
+    "ip-detector": "dist/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "scripts": {
     "cli": "ts-node src/index.ts",
     "server": "ts-node src/server.ts",
     "build": "tsc",
     "start": "node dist/index.js",
-    "start:server": "node dist/server.js"
+    "start:server": "node dist/server.js",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "ip",
+    "ip-address",
+    "geolocation",
+    "geoip",
+    "maxmind",
+    "ip-api",
+    "public-ip",
+    "location"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/user/ip-detector"
+  },
+  "engines": {
+    "node": ">=16.0.0"
   },
   "dependencies": {
     "axios": "^1.6.0",

@@ -93,3 +93,8 @@ npm run build        # 构建
 3. 放置到 `data/GeoLite2-City.mmdb`
 
 如无本地数据库，将自动使用在线 API 备用。
+
+## TODO
+
+- [ ] 支持通过 CLI 参数配置是否展示具体城市
+- [ ] 支持通过 CLI 参数配置 geoSource

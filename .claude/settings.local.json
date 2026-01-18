@@ -14,7 +14,8 @@
       "Bash(bash:*)",
       "WebFetch(domain:ip-api.com)",
       "Bash(npx ts-node:*)",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "Bash(npm pack:*)"
     ]
   }
 }
