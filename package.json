@@ -1,0 +1,31 @@
+{
+  "name": "ip-detector",
+  "version": "3.0.0",
+  "description": "IP 检测工具",
+  "main": "dist/index.js",
+  "scripts": {
+    "cli": "ts-node src/index.ts",
+    "server": "ts-node src/server.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "start:server": "node dist/server.js",
+    "update-geoip": "./scripts/update-geoip.sh"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "maxmind": "^4.3.0",
+    "chalk": "^4.1.2",
+    "cli-table3": "^0.6.3",
+    "koa": "^2.14.2",
+    "@koa/router": "^12.0.1",
+    "@koa/cors": "^4.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.0",
+    "@types/node": "^20.10.0",
+    "@types/koa": "^2.13.12",
+    "@types/koa__router": "^12.0.4",
+    "@types/koa__cors": "^4.0.3",
+    "ts-node": "^10.9.2"
+  }
+}

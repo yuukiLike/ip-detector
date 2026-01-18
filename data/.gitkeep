@@ -1,0 +1,2 @@
+# This directory contains MaxMind GeoLite2 database files
+# Run: npm run update-geoip to download the database
