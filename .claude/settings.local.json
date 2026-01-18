@@ -15,7 +15,11 @@
       "WebFetch(domain:ip-api.com)",
       "Bash(npx ts-node:*)",
       "Bash(curl:*)",
-      "Bash(npm pack:*)"
+      "Bash(npm pack:*)",
+      "Bash(git config:*)",
+      "Bash(cat:*)",
+      "Bash(git remote set-url:*)",
+      "Bash(ssh:*)"
     ]
   }
 }
