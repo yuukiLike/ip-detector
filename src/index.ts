@@ -8,16 +8,20 @@ import { detectAll } from './detector';
 
 async function main() {
   const config = loadConfig();
+  const geoSource = config.geoSource || 'both';
 
   // 初始化 MaxMind
-  if (config.maxmindPath) {
+  if (config.maxmindPath && (geoSource === 'maxmind' || geoSource === 'both')) {
     await initMaxMind(config.maxmindPath);
   }
 
   console.log(chalk.bold('\n IP 检测结果\n'));
 
   // 执行检测
-  const results = await detectAll(config.targets, config.timeout);
+  const results = await detectAll(config.targets, config.timeout, {
+    source: geoSource,
+    reverseGeocode: config.reverseGeocode
+  });
 
   // 输出表格
   const table = new Table({
@@ -27,7 +31,12 @@ async function main() {
 
   for (const r of results) {
     if (r.success) {
-      const location = r.geo ? `${r.geo.country} ${r.geo.city || ''}`.trim() : '-';
+      let location = '-';
+      if (r.geoResults?.length) {
+        location = r.geoResults.map(g =>
+          `[${g.source}] ${g.country} ${g.city || ''}`.trim()
+        ).join('\n');
+      }
       table.push([r.name, r.ip, location]);
     } else {
       table.push([r.name, chalk.red('失败'), chalk.gray(r.error || '')]);

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { Target, DetectResult } from './types';
-import { locate } from './geolocation';
+import { locate, LocateOptions } from './geolocation';
 
 // 从 JSON 中提取值
 function getJsonValue(obj: any, path: string): string | null {
@@ -16,7 +16,7 @@ function extractIP(text: string, regex?: string): string | null {
 }
 
 // 检测单个目标
-export async function detectOne(target: Target, timeout: number): Promise<DetectResult> {
+export async function detectOne(target: Target, timeout: number, locateOptions: LocateOptions = {}): Promise<DetectResult> {
   try {
     const { data } = await axios.get(target.url, {
       timeout,
@@ -36,9 +36,9 @@ export async function detectOne(target: Target, timeout: number): Promise<Detect
     }
 
     // 获取地理位置
-    const geo = await locate(ip);
+    const geoResults = await locate(ip, locateOptions);
 
-    return { name: target.name, ip, geo: geo || undefined, success: true };
+    return { name: target.name, ip, geoResults: geoResults.length ? geoResults : undefined, success: true };
   } catch (e) {
     const msg = e instanceof Error ? e.message : String(e);
     return { name: target.name, ip: '', success: false, error: msg };
@@ -46,6 +46,6 @@ export async function detectOne(target: Target, timeout: number): Promise<Detect
 }
 
 // 检测所有目标
-export async function detectAll(targets: Target[], timeout: number): Promise<DetectResult[]> {
-  return Promise.all(targets.map(t => detectOne(t, timeout)));
+export async function detectAll(targets: Target[], timeout: number, locateOptions: LocateOptions = {}): Promise<DetectResult[]> {
+  return Promise.all(targets.map(t => detectOne(t, timeout, locateOptions)));
 }
