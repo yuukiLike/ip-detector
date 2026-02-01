@@ -32,7 +32,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/user/ip-detector"
+    "url": "https://github.com/yuukiLike/ip-detector"
   },
   "engines": {
     "node": ">=16.0.0"

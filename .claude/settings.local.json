@@ -19,7 +19,11 @@
       "Bash(git config:*)",
       "Bash(cat:*)",
       "Bash(git remote set-url:*)",
-      "Bash(ssh:*)"
+      "Bash(ssh:*)",
+      "WebFetch(domain:www.moltbook.com)",
+      "WebFetch(domain:docs.n8n.io)",
+      "WebFetch(domain:blog.horizon.dev)",
+      "WebFetch(domain:www.buspa.it)"
     ]
   }
 }
