@@ -23,7 +23,10 @@
       "WebFetch(domain:www.moltbook.com)",
       "WebFetch(domain:docs.n8n.io)",
       "WebFetch(domain:blog.horizon.dev)",
-      "WebFetch(domain:www.buspa.it)"
+      "WebFetch(domain:www.buspa.it)",
+      "Bash(chmod:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
     ]
   }
 }
